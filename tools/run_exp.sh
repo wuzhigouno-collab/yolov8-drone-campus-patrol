@@ -16,11 +16,13 @@
 #       工作区   /root/autodl-tmp/eagle_eye   (git clone 至此;本脚本按自身位置定位项目根)
 #       数据集   /root/autodl-tmp/datasets    (yolo settings 已固化 datasets_dir)
 #       训练输出  工作区内 runs/ 与 logs/
-#    数据集用 ultralytics 内置 visdrone.yaml,首次训练自动下载并转 YOLO 格式
-#    (§2,约 2.3GB);weights/ 与数据集不进 git(§12)。
+#    数据集用 ultralytics 内置 VisDrone.yaml(8.4.21 实测文件名,大小写敏感),
+#    首次训练自动下载并转 YOLO 格式(§2,约 2.3GB);weights/ 与数据集不进 git(§12)。
 # 3. batch 环境变量覆盖:统一默认 batch=32(§4);OOM 时人工减半重跑:
 #       BATCH=16 bash tools/run_exp.sh e0
 #    (yolov8s@960 建议 BATCH=16,见 §6 batch 建议;重跑前请先 rsync/删除旧 runs 目录)
+#    EPOCHS/IMGSZ/DATA 同模式支持环境覆盖(默认 100/960/VisDrone.yaml);
+#    EPOCHS/IMGSZ 覆盖仅供实例侧快速验证临时调小,正式实验必须跑默认值。
 # 4. 本机冒烟(离线、合成数据、分钟级,走 tools/train.py 既有 --smoke 机制):
 #       SMOKE=1 bash tools/run_exp.sh e0
 #    冒烟 runs 目录带 smoke_ 前缀,config_snapshot.yaml 中标注
@@ -72,14 +74,16 @@ ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$ROOT"
 
 # ---------- 统一训练参数(docs/实验计划.md §4,除受试变量外全部实验一致) ----------
-IMGSZ=960
-EPOCHS=100
+IMGSZ="${IMGSZ:-960}"           # 环境变量覆盖:实例侧快速验证可临时调小(正式口径 960)
+EPOCHS="${EPOCHS:-100}"         # 环境变量覆盖:实例侧快速验证可临时调小(正式口径 100)
 BATCH="${BATCH:-32}"            # 环境变量覆盖:OOM 时人工减半重跑(§6)
 OPTIMIZER=auto
 PATIENCE=20
 SEED=0
 # multi_scale=True / cos_lr=True / AMP 开启:在各训练调用处显式写死,不接受覆盖
-DATA="${DATA:-visdrone.yaml}"   # ultralytics 内置,首次自动下载转换(§2)
+# 8.4.21 内置数据集文件名实测为 VisDrone.yaml(大小写均大写段;Linux 大小写敏感,
+# 小写 visdrone.yaml 不可解析——R3 实例实测踩坑,Windows 不敏感故本机不暴露)
+DATA="${DATA:-VisDrone.yaml}"   # ultralytics 内置,首次自动下载转换(§2)
 MODEL_N="${MODEL_N:-yolov8n.pt}"   # COCO 预训练起步权重(§3);实例上首次自动下载
 MODEL_S="${MODEL_S:-yolov8s.pt}"   # E2 上限参照
 RUNS_DIR=runs
@@ -88,6 +92,18 @@ PYTHON="${PYTHON:-python}"
 SMOKE="${SMOKE:-0}"
 SMOKE_EPOCHS="${SMOKE_EPOCHS:-1}"  # 冒烟极小轮数,仅走通流程
 SMOKE_BATCH="${SMOKE_BATCH:-4}"
+
+# runs 根目录的绝对路径(原生形式):8.4.21 get_save_dir(cfg/__init__.py)对**相对**
+# project 会前置 RUNS_DIR/task/——project=runs 实际落盘 runs/detect/runs/<name>
+# (R3 实例实测踩坑);传**绝对路径**则原样使用,落盘 <工作区>/runs/<实验名>/,
+# 与快照定位口径一致。Windows Git Bash 下 /c/... 需经 cygpath 转原生路径,
+# 供 Windows 版 python/yolo 解析;Linux 下无 cygpath,直接用原值。
+if command -v cygpath >/dev/null 2>&1; then
+    ROOT_NATIVE="$(cygpath -w "$ROOT")"
+else
+    ROOT_NATIVE="$ROOT"
+fi
+RUNS_ABS="$ROOT_NATIVE/$RUNS_DIR"
 
 FULL_CMD="bash tools/run_exp.sh${*:+ $*}"
 SUB="${1:-help}"
@@ -109,12 +125,16 @@ tmux_hint() {
 # 配置快照:每次经本脚本发起训练后自动落盘到当次 runs 目录(config_snapshot.yaml)
 #   $1=name(runs 目录名) $2=实验编号 $3=模式(train|smoke) $4=备注
 #   $5=附加 Albumentations 注入说明(无则空) $6=训练开始时刻(epoch 秒)
+#   $7=本次执行日志路径(可选,用于解析 ultralytics 实际 save_dir)
 # 快照取值来源:优先 ultralytics 训练器落盘的 args.yaml(实际生效值);
 # args.yaml 缺失时回退为调用参数并在 values_source 中如实标注。
+# save_dir 定位:优先从执行日志解析训练器实际 save_dir(运行时实际行为,
+# 同名自增残留场景也能精确命中);解析失败回退"同名前缀+mtime"扫描。
 # ============================================================================
 snapshot_config() {
     SNAP_NAME="$1" SNAP_EXP="$2" SNAP_MODE="$3" SNAP_NOTE="$4" SNAP_EXTRA="$5" SNAP_START="$6" \
-    SNAP_RUNS="$RUNS_DIR" SNAP_CMD="$FULL_CMD" \
+    SNAP_LOG="${7:-}" \
+    SNAP_RUNS="$RUNS_ABS" SNAP_CMD="$FULL_CMD" \
     SNAP_F_MODEL="${SNAP_F_MODEL:-}" SNAP_F_DATA="${SNAP_F_DATA:-$DATA}" \
     SNAP_F_IMGSZ="${SNAP_F_IMGSZ:-$IMGSZ}" SNAP_F_EPOCHS="${SNAP_F_EPOCHS:-$EPOCHS}" \
     SNAP_F_BATCH="${SNAP_F_BATCH:-$BATCH}" SNAP_F_OPTIMIZER="${SNAP_F_OPTIMIZER:-$OPTIMIZER}" \
@@ -123,7 +143,7 @@ snapshot_config() {
     "$PYTHON" - <<'PYEOF'
 # -*- coding: utf-8 -*-
 # run_exp.sh 内嵌:生成 config_snapshot.yaml(自动调用,禁止人肉另跑)
-import os, sys, glob, json, socket, platform, datetime
+import os, sys, glob, json, re, socket, platform, datetime
 try:
     import yaml
 except ImportError:
@@ -133,17 +153,44 @@ name = os.environ["SNAP_NAME"]
 runs_root = os.environ["SNAP_RUNS"]
 start = float(os.environ["SNAP_START"])
 
-# 1) 定位当次 runs 目录:同名前缀 + 目录时间不早于训练开始(ultralytics 同名会加序号)
-cands = []
-for d in glob.glob(os.path.join(runs_root, name + "*")):
-    if os.path.isdir(d):
-        mt = os.path.getmtime(d)
-        if mt >= start - 5:
-            cands.append((mt, d))
-if not cands:
-    print("快照失败:%s 下找不到本次 %s* 目录" % (runs_root, name), file=sys.stderr)
-    sys.exit(1)
-run_dir = max(cands)[1]
+
+def _parse_save_dir(log_path):
+    """从本次执行日志解析 ultralytics 训练器实际 save_dir(运行时实际行为)。"""
+    if not log_path:
+        return None
+    try:
+        with open(log_path, encoding="utf-8", errors="replace") as fh:
+            txt = fh.read()
+    except OSError:
+        return None
+    txt = re.sub(r"\x1b\[[0-9;]*m", "", txt)  # 去 ANSI 色码
+    m = re.findall(r"save_dir=([^\s,]+)", txt)   # trainer 参数行 save_dir=<路径>
+    if m:
+        return m[-1].strip()
+    m = re.findall(r"Results saved to (.+)", txt)  # 训练/验证完成行
+    if m:
+        return m[-1].strip()
+    return None
+
+
+# 1a) 优先:日志解析的实际 save_dir(校验存在性且目录名以实验名开头,防串场)
+run_dir = _parse_save_dir(os.environ.get("SNAP_LOG", ""))
+if run_dir and (not os.path.isdir(run_dir)
+                or not os.path.basename(run_dir).startswith(name)):
+    print("日志解析的 save_dir 无效(%s),回退目录扫描" % run_dir, file=sys.stderr)
+    run_dir = None
+# 1b) 回退:同名前缀 + 目录时间不早于训练开始(ultralytics 同名会加序号)
+if run_dir is None:
+    cands = []
+    for d in glob.glob(os.path.join(runs_root, name + "*")):
+        if os.path.isdir(d):
+            mt = os.path.getmtime(d)
+            if mt >= start - 5:
+                cands.append((mt, d))
+    if not cands:
+        print("快照失败:%s 下找不到本次 %s* 目录" % (runs_root, name), file=sys.stderr)
+        sys.exit(1)
+    run_dir = max(cands)[1]
 
 # 2) 读取 ultralytics 训练器落盘的实际生效参数(args.yaml 优先,args.json 兜底)
 eff = {}
@@ -250,7 +297,7 @@ train_combo() {
     EXP_MODEL="$model" EXP_DATA="$DATA" EXP_IMGSZ="$IMGSZ" EXP_EPOCHS="$EPOCHS" \
     EXP_BATCH="$BATCH" EXP_OPTIMIZER="$OPTIMIZER" EXP_PATIENCE="$PATIENCE" EXP_SEED="$SEED" \
     EXP_DEGREES="$degrees" EXP_COPY_PASTE="$cp" EXP_ALBU_EXTRAS="$extras" \
-    EXP_PROJECT="$RUNS_DIR" EXP_NAME="$name" \
+    EXP_PROJECT="$RUNS_ABS" EXP_NAME="$name" \
     "$PYTHON" - <<'PYEOF'
 # -*- coding: utf-8 -*-
 # run_exp.sh 内嵌:E1b/E1c/E1e/E2 训练驱动(补丁注入 Albumentations 受试变换)
@@ -332,7 +379,7 @@ results = model.train(
 print("TRAIN_SAVE_DIR=%s" % getattr(results, "save_dir", ""))
 PYEOF
     rc=$?
-    snapshot_config "$name" "$exp_id" "train" "$note" "$extra_desc" "$start" \
+    snapshot_config "$name" "$exp_id" "train" "$note" "$extra_desc" "$start" "$LOGF" \
         || warn "配置快照生成失败(训练退出码 $rc 不变)"
     return $rc
 }
@@ -356,9 +403,9 @@ train_yolo() {
         mosaic=1.0 fliplr=0.5 hsv_h=0.015 hsv_s=0.7 hsv_v=0.4 \
         degrees="${DEGREES:-0.0}" translate=0.1 scale=0.5 shear=0.0 perspective=0.0 \
         flipud=0.0 mixup=0.0 cutmix=0.0 copy_paste="${COPY_PASTE:-0.0}" \
-        project="$RUNS_DIR" name="$name"
+        project="$RUNS_ABS" name="$name"
     rc=$?
-    snapshot_config "$name" "$exp_id" "train" "$note" "" "$start" \
+    snapshot_config "$name" "$exp_id" "train" "$note" "" "$start" "$LOGF" \
         || warn "配置快照生成失败(训练退出码 $rc 不变)"
     return $rc
 }
@@ -383,13 +430,13 @@ smoke_train() {
     "$PYTHON" tools/train.py --smoke \
         --epochs "$SMOKE_EPOCHS" --imgsz 320 --batch "$SMOKE_BATCH" \
         --degrees "$degrees" \
-        --seed "$SEED" --project "$RUNS_DIR" --name "$name"
+        --seed "$SEED" --project "$RUNS_ABS" --name "$name"
     rc=$?
     SNAP_F_MODEL="weights/yolov8n.pt(train.py smoke)" SNAP_F_DATA="合成迷你数据集(train.py smoke)" \
     SNAP_F_IMGSZ=320 SNAP_F_EPOCHS="$SMOKE_EPOCHS" SNAP_F_BATCH="$SMOKE_BATCH" \
     SNAP_F_PATIENCE=100 SNAP_F_MS=False SNAP_F_COSLR=False SNAP_F_AMP=False \
     snapshot_config "$name" "$exp_id" "smoke" \
-        "SMOKE 冒烟:合成数据/无语义/精度无意义,不冒充真实训练" "" "$start" \
+        "SMOKE 冒烟:合成数据/无语义/精度无意义,不冒充真实训练" "" "$start" "$LOGF" \
         || warn "配置快照生成失败(冒烟退出码 $rc 不变)"
     return $rc
 }
@@ -565,7 +612,7 @@ PYEOF
 #   openvino INT8 面向 Intel CPU 部署,与本项目边缘/FPGA 论证主线无关。
 # 注意:① engine 导出强制 GPU(device=0,CPU 会被 assert 拒绝);
 #   ② 两腿导出产物同名 <stem>.engine,每腿导完立即改名为 _fp16/_int8.engine;
-#   ③ INT8 校准集 = data 的 val 划分全量(visdrone 验证集 548 张,fraction
+#   ③ INT8 校准集 = data 的 val 划分全量(VisDrone 验证集 548 张,fraction
 #   默认 1.0,augment=False,get_int8_calibration_dataloader 行为),batch=8
 #   仅加速校准收集,不改变校准集口径;④ engine 绑定生成机 GPU/TensorRT
 #   版本,同机导出同机复测,禁止跨机拷贝;⑤ 实例侧需预装 tensorrt(见脚本头
@@ -845,9 +892,10 @@ dispatch() {
 
 main() {
     mkdir -p "$LOGS_DIR"
-    local ts logf rcfile rc
+    local ts rcfile rc
     ts=$(date +%Y%m%d_%H%M%S)
-    logf="$LOGS_DIR/run_exp_${SUB}_${ts}.log"
+    # LOGF 为全局变量:各实验函数的快照定位(snapshot_config)要解析本日志中的实际 save_dir
+    LOGF="$LOGS_DIR/run_exp_${SUB}_${ts}.log"
     rcfile="$LOGS_DIR/.rc_${SUB}_${ts}_$$"
     {
         echo "# 命令: $FULL_CMD"
@@ -856,11 +904,11 @@ main() {
         # 用 EXIT 陷阱捕获退出码:正常结束与 die/中断路径都能落"结束时间+退出码"
         trap 'trc=$?; echo "$trc" > "$rcfile"; echo "# 结束: $(date "+%Y-%m-%d %H:%M:%S")"; echo "# 退出码: $trc"' EXIT
         dispatch "$@"
-    } 2>&1 | tee "$logf"
+    } 2>&1 | tee "$LOGF"
     rc=$(cat "$rcfile" 2>/dev/null || true)
     rm -f "$rcfile"
     [ -n "$rc" ] || rc=2
-    echo "执行记录: $logf"
+    echo "执行记录: $LOGF"
     return "$rc"
 }
 
