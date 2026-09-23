@@ -1,0 +1,56 @@
+2026-09-23 19:20:05 | INFO | test_engine | ==== 阶段 C 统一检测引擎 验收测试开始 ====
+2026-09-23 19:20:08 | INFO | src.engine | 正在加载 YOLO 模型权重：C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt
+2026-09-23 19:20:08 | INFO | src.engine | 模型加载完成，可识别类别数：80，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 airplane）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎共享实例已建立：本进程内检测/跟踪/切片三条推理路径复用同一模型与判定结果，权重不再重复加载
+2026-09-23 19:20:08 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:20:08 | INFO | src.slicer | 切片推理器初始化：2x2 切片、重叠率 0.20、合并 NMS IOU 阈值 0.50
+2026-09-23 19:20:08 | INFO | test_engine | 用例1 PASS：shared() 单例成立；Detector/ByteTrackTracker/SlicedDetector 共用同一引擎与模型（is 判定）；names/FP16/类别映射判定同源；权重加载日志仅 1 条（C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 motorcycle）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True，但当前环境无可用 CUDA GPU：半精度推理仅 GPU 支持，自动降级为 FP32 全精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 motorcycle）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=False：使用 FP32 全精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 motorcycle）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 motorcycle）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:20:08 | INFO | test_engine | 用例2 PASS：引擎 FP16 判定委托 resolve_fp16——有CUDA启用/无CUDA降级/fp16=False 三分支结论与文案逐值一致；跟踪器结论与引擎同源
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：10，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True 且模型类别名全部属于 VisDrone 10 类集合：启用 VisDrone 10->5 类别映射（pedestrian+people->person、car+van->car、motor->motorcycle，truck/tricycle/awning-tricycle 丢弃）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 motorcycle）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：10，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=False：VisDrone 类别映射未启用，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：10，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True 且模型类别名全部属于 VisDrone 10 类集合：启用 VisDrone 10->5 类别映射（pedestrian+people->person、car+van->car、motor->motorcycle，truck/tricycle/awning-tricycle 丢弃）
+2026-09-23 19:20:08 | INFO | src.slicer | 切片推理器初始化：2x2 切片、重叠率 0.20、合并 NMS IOU 阈值 0.50
+2026-09-23 19:20:08 | INFO | test_engine | 用例3 PASS：引擎类别映射判定委托 build_class_mapper——VisDrone 生效/COCO 恒等/开关关闭三组一致；切片器结论与引擎同源
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 motorcycle）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | test_engine | 用例4 PASS：引擎 names 取自所持模型（伪造模型 is 判定、真实权重 80 类逐值一致）；Detector.names 与引擎同源
+2026-09-23 19:20:08 | INFO | src.engine | 正在加载 YOLO 模型权重：C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt
+2026-09-23 19:20:08 | INFO | src.engine | 模型加载完成，可识别类别数：80，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 airplane）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎共享实例已建立：本进程内检测/跟踪/切片三条推理路径复用同一模型与判定结果，权重不再重复加载
+2026-09-23 19:20:08 | INFO | src.engine | 正在加载 YOLO 模型权重：C:\Users\OS\Desktop\eagle_eye_patrol\weights\yolo26n.pt
+2026-09-23 19:20:08 | INFO | src.engine | 模型加载完成，可识别类别数：80，关注类别：person,car,bicycle
+2026-09-23 19:20:08 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:20:08 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 airplane）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:20:08 | INFO | src.engine | 检测引擎共享实例已建立：本进程内检测/跟踪/切片三条推理路径复用同一模型与判定结果，权重不再重复加载
+2026-09-23 19:20:08 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights\yolo26n.pt）
+2026-09-23 19:20:08 | INFO | src.slicer | 切片推理器初始化：2x2 切片、重叠率 0.20、合并 NMS IOU 阈值 0.50
+2026-09-23 19:20:08 | INFO | test_engine | 用例5 PASS：Config.weights_path 指向 weights\yolo26n.pt 后，三路径共享新引擎/新模型（与默认权重引擎不同实例）；names 一致且与新权重（80 类）逐值相同——E6 换权重只改配置项即就绪
+2026-09-23 19:20:08 | INFO | test_engine | ==== 全部 5 组用例断言通过 ====
+PASS: tests/test_engine.py 鍏ㄩ儴鏂█閫氳繃

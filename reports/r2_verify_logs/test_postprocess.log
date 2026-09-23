@@ -1,0 +1,20 @@
+2026-09-23 19:16:34 | INFO | test_postprocess | ==== 阶段 C 公共后处理模块 验收测试开始 ====
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例1 PASS：dog 被过滤；target_classes 空/None 时不过滤
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例2 PASS：四键结构与键序精确；conf=0.1235(round4)；框 [10,20,21,42](int 取整)；中心 [16,31](浮点口径)；顺序保持
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例3 PASS：无框/全过滤/boxes None/无跟踪ID 均返回空列表
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例4 PASS：box_transform 偏移映射正确、中心按整数框、slice 字段并入且键序 cls/conf/box/center/slice
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例5 PASS：dog 过滤、无ID框跳过；保留 (person,#7) 与 (car,#9)，检测项结构与整图路径一致
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例6 PASS：pedestrian->person、van->car 保留；truck 丢弃；过滤作用于映射后类别名；恒等路径按原始名过滤
+2026-09-23 19:16:34 | INFO | test_postprocess | 用例7a PASS：Detector.detect 委托公共实现，输出与直接调用 collect_detections 逐值一致
+2026-09-23 19:16:35 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:16:36 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:36 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 dog）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:36 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:36 | INFO | test_postprocess | 用例7b PASS：track 路径与降级 predict 路径检测项均与公共实现逐值一致（轨迹#7 确认、dog 过滤）
+2026-09-23 19:16:36 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：4，关注类别：person,car,bicycle
+2026-09-23 19:16:36 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:36 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 dog）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:36 | INFO | src.slicer | 切片推理器初始化：2x2 切片、重叠率 0.20、合并 NMS IOU 阈值 0.50
+2026-09-23 19:16:36 | INFO | test_postprocess | 用例7c PASS：SlicedDetector 4 片推理均走公共实现，输出含 slice 追溯字段、键序与重构前一致
+2026-09-23 19:16:36 | INFO | test_postprocess | ==== 全部 9 组用例断言通过 ====
+PASS: tests/test_postprocess.py 全部断言通过

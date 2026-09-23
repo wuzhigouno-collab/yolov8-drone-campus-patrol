@@ -1,0 +1,29 @@
+2026-09-23 19:17:08 | INFO | test_tracker | ==== A11 ByteTrack 跟踪与徘徊检测 验收测试开始 ====
+2026-09-23 19:17:08 | INFO | test_tracker | 用例1 PASS：徘徊区域像素换算正确 (250, 200, 750, 600) / (100, 160, 500, 480)，越界钳制生效
+2026-09-23 19:17:08 | INFO | src.loitering | 帧50 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 1）
+2026-09-23 19:17:08 | INFO | test_tracker | 用例2 PASS：停留超 2.0s 阈值于帧50 触发徘徊告警（停留 2.00s，徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 1））
+2026-09-23 19:17:08 | INFO | test_tracker | 用例3 PASS：停留 1.96s < 2.0s 阈值，0 告警
+2026-09-23 19:17:08 | INFO | src.loitering | 帧50 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 1）
+2026-09-23 19:17:08 | INFO | test_tracker | 用例4 PASS：4s 持续停留只触发 1 次告警（不逐帧重复）
+2026-09-23 19:17:08 | INFO | src.loitering | 帧50 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 1）
+2026-09-23 19:17:08 | INFO | src.loitering | 帧105 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 56）
+2026-09-23 19:17:08 | INFO | test_tracker | 用例5 PASS：离开区域驻留清零，再入重新计时（帧50/帧105 各 1 次告警）
+2026-09-23 19:17:08 | INFO | test_tracker | 用例6 PASS：未确认目标停留 80 帧 0 告警（与 A5/A11 契约一致）
+2026-09-23 19:17:08 | INFO | src.loitering | 帧25 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 1.0 秒（阈值 1.0 秒，进入帧 1）
+2026-09-23 19:17:08 | INFO | test_tracker | 用例7 PASS：同一驻留 1.6s 轨迹，阈值 1.0s 触发 / 3.0s 不触发；区域配置不含锚点时不触发（阈值与区域均走 config 且生效）
+2026-09-23 19:17:08 | INFO | src.loitering | 帧号不连续（40 -> 100），徘徊驻留状态清空重计
+2026-09-23 19:17:08 | INFO | src.loitering | 帧149 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 100）
+2026-09-23 19:17:08 | INFO | test_tracker | 用例8 PASS：帧号 40->100 跳变后驻留重计，0 假告警
+2026-09-23 19:17:08 | INFO | src.archiver | 告警归档器就绪：归档目录 C:\Users\OS\Desktop\eagle_eye_patrol\tests\a11_loiter_zwemgtib，告警日志 C:\Users\OS\Desktop\eagle_eye_patrol\tests\a11_loiter_zwemgtib\alert_log.csv
+2026-09-23 19:17:08 | INFO | src.loitering | 帧50 徘徊告警：目标#1 person 锚点(500,400) 在监控区域内已连续停留 2.0 秒（阈值 2.0 秒，进入帧 1）
+2026-09-23 19:17:08 | INFO | src.archiver | 告警归档 #1：徘徊告警 person (500, 400) -> alert_20260923_191708_319_0001_alert.png
+2026-09-23 19:17:08 | INFO | test_tracker | 用例9 PASS：徘徊告警已归档——CSV 行 ['2026-09-23 19:17:08.319', '徘徊告警', 'person', '0.85', '(500, 400)']，截图 alert_20260923_191708_319_0001_alert.png 存在
+2026-09-23 19:17:08 | INFO | src.line_counter | 帧3 越线进：目标#7 person 穿线于(500,400)（视频内时间 0.12s），累计 进1 出0
+2026-09-23 19:17:08 | INFO | test_tracker | 用例10 PASS：backend=bytetrack 的 ConfirmResult 驱动 A6 越线判进正常（track_id=7 保持）
+2026-09-23 19:17:08 | INFO | test_tracker | ==== 徘徊检测合成用例 10 组断言全部通过 ====
+PASS: 徘徊检测/跟踪契约 合成单元测试 10 组用例全部通过
+2026-09-23 19:17:08 | INFO | test_tracker | 回归 PASS：test_confirm.py 退出码 0（IOU 降级路径行为不变）
+PASS: test_confirm.py 回归通过（退出码 0）
+2026-09-23 19:17:08 | INFO | test_tracker | 回归 PASS：test_line.py 退出码 0（IOU 降级路径行为不变）
+PASS: test_line.py 回归通过（退出码 0）
+PASS: tests/test_tracker.py 全部断言通过

@@ -1,0 +1,22 @@
+2026-09-23 19:17:55 | INFO | test_heatmap | ==== A8 热力图模块 合成场景单元测试开始 ====
+2026-09-23 19:17:55 | INFO | test_heatmap | 用例1 PASS：update 只收已确认目标，锚点=底部中心 (120.0, 300.0)，add_point/查询接口正确
+2026-09-23 19:17:55 | INFO | test_heatmap | 用例2 PASS：热区亮度 239.6 >> 冷区 0.0（差 239.6）
+2026-09-23 19:17:55 | INFO | test_heatmap | 用例3 PASS：空累积 render/export_png 均抛 ValueError 且不落盘
+2026-09-23 19:17:55 | INFO | test_heatmap | 用例4 PASS：底帧叠加无热区原样保持、热区混合、尺寸校验生效
+2026-09-23 19:17:55 | INFO | src.heatmap | 画面尺寸变化 (640, 480) -> (320, 240)，热力累积清空重计
+2026-09-23 19:17:55 | INFO | test_heatmap | 用例5 PASS：reset 清空、尺寸变化自动清空重计均正确
+2026-09-23 19:17:55 | INFO | test_heatmap | ==== 全部 5 组合成用例断言通过 ====
+2026-09-23 19:17:55 | INFO | src.video_source | 已打开视频文件：C:/Users/OS/Desktop/farm_guard/videos/5G智慧农业素材.mp4（1920x1080，25.00 fps）
+PASS: 合成场景单元测试 5 组用例全部通过
+2026-09-23 19:17:59 | INFO | src.engine | 正在加载 YOLO 模型权重：C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt
+2026-09-23 19:17:59 | INFO | src.engine | 模型加载完成，可识别类别数：80，关注类别：person,car,bicycle
+2026-09-23 19:17:59 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:17:59 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 airplane）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:17:59 | INFO | src.engine | 检测引擎共享实例已建立：本进程内检测/跟踪/切片三条推理路径复用同一模型与判定结果，权重不再重复加载
+2026-09-23 19:17:59 | INFO | test_heatmap | 真实视频端到端验收开始：C:/Users/OS/Desktop/farm_guard/videos/5G智慧农业素材.mp4（1920x1080，25.00 fps），目标累积点 80，帧上限 800
+2026-09-23 19:18:07 | INFO | test_heatmap | 已累积 80 个已确认锚点（>= 80），于第 478 帧收尾
+2026-09-23 19:18:07 | INFO | src.video_source | 视频源已释放
+2026-09-23 19:18:07 | INFO | src.heatmap | 热力图已导出：C:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_black.png（累积 80 个轨迹点，底帧：黑底）
+2026-09-23 19:18:07 | INFO | src.heatmap | 热力图已导出：C:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_overlay.png（累积 80 个轨迹点，底帧：当前画面）
+2026-09-23 19:18:07 | INFO | test_heatmap | 亮度断言通过：密集区中心 (807,447)（半径25内邻居12个）亮度均值 242.8；无目标格 (0,0) 亮度均值 0.0；差 242.8 > 50
+鐪熷疄瑙嗛

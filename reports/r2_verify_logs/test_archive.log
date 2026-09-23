@@ -1,0 +1,93 @@
+2026-09-23 19:17:22 | INFO | test_archive | ==== A7 ¸æ¾¯¹éµµÄ£¿é ºÏ³É³¡¾°µ¥Ôª²âÊÔ¿ªÊ¼ ====
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµÆ÷¾ÍĞ÷£º¹éµµÄ¿Â¼ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\unit\case1\deep\dir£¬¸æ¾¯ÈÕÖ¾ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\unit\case1\deep\dir\alert_log.csv
+2026-09-23 19:17:22 | INFO | test_archive | ÓÃÀı1 PASS£ºÇ¶Ì×Ä¿Â¼×Ô¶¯´´½¨£¬CSV ±íÍ· ['Ê±¼ä´Á', 'ÊÂ¼şÀàĞÍ', 'Àà±ğ', 'ÖÃĞÅ¶È', 'Î»ÖÃ', '½ØÍ¼Â·¾¶']
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #1£ºÄ¿±êÈ·ÈÏ person (100, 120) -> alert_20260923_191722_291_0001_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #2£ºÔ½Ïß½ø car (160, 121) -> alert_20260923_191722_293_0002_cross_in.png
+2026-09-23 19:17:22 | INFO | test_archive | ÓÃÀı2/3 PASS£ºÁ½Ìõ¸æ¾¯¹éµµÍê³É£¬×Ö¶ÎÆëÈ«¡¢Ê±¼äÎÇºÏ¡¢½ØÍ¼´ø¿òÏñËØÑéÖ¤Í¨¹ı£¨alert_20260923_191722_291_0001_confirm.png£©
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµÆ÷¾ÍĞ÷£º¹éµµÄ¿Â¼ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\unit\case4£¬¸æ¾¯ÈÕÖ¾ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\unit\case4\alert_log.csv
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #1£ºÄ¿±êÈ·ÈÏ person (0, 0) -> alert_20260923_191722_301_0001_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #2£ºÄ¿±êÈ·ÈÏ person (1, 0) -> alert_20260923_191722_302_0002_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #3£ºÄ¿±êÈ·ÈÏ person (2, 0) -> alert_20260923_191722_303_0003_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #4£ºÄ¿±êÈ·ÈÏ person (3, 0) -> alert_20260923_191722_303_0004_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #5£ºÄ¿±êÈ·ÈÏ person (0, 1) -> alert_20260923_191722_304_0005_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #6£ºÄ¿±êÈ·ÈÏ person (1, 1) -> alert_20260923_191722_304_0006_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #7£ºÄ¿±êÈ·ÈÏ person (2, 1) -> alert_20260923_191722_305_0007_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #8£ºÄ¿±êÈ·ÈÏ person (3, 1) -> alert_20260923_191722_306_0008_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #9£ºÄ¿±êÈ·ÈÏ person (0, 2) -> alert_20260923_191722_306_0009_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #10£ºÄ¿±êÈ·ÈÏ person (1, 2) -> alert_20260923_191722_307_0010_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #11£ºÄ¿±êÈ·ÈÏ person (2, 2) -> alert_20260923_191722_307_0011_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #12£ºÄ¿±êÈ·ÈÏ person (3, 2) -> alert_20260923_191722_308_0012_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #13£ºÄ¿±êÈ·ÈÏ person (0, 3) -> alert_20260923_191722_308_0013_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #14£ºÄ¿±êÈ·ÈÏ person (1, 3) -> alert_20260923_191722_309_0014_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #15£ºÄ¿±êÈ·ÈÏ person (2, 3) -> alert_20260923_191722_309_0015_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #16£ºÄ¿±êÈ·ÈÏ person (3, 3) -> alert_20260923_191722_310_0016_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #17£ºÄ¿±êÈ·ÈÏ person (0, 4) -> alert_20260923_191722_311_0017_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #18£ºÄ¿±êÈ·ÈÏ person (1, 4) -> alert_20260923_191722_311_0018_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #19£ºÄ¿±êÈ·ÈÏ person (2, 4) -> alert_20260923_191722_312_0019_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #20£ºÄ¿±êÈ·ÈÏ person (3, 4) -> alert_20260923_191722_312_0020_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #21£ºÄ¿±êÈ·ÈÏ person (0, 5) -> alert_20260923_191722_313_0021_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #22£ºÄ¿±êÈ·ÈÏ person (1, 5) -> alert_20260923_191722_314_0022_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #23£ºÄ¿±êÈ·ÈÏ person (2, 5) -> alert_20260923_191722_314_0023_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #24£ºÄ¿±êÈ·ÈÏ person (3, 5) -> alert_20260923_191722_315_0024_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #25£ºÄ¿±êÈ·ÈÏ person (0, 6) -> alert_20260923_191722_315_0025_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #26£ºÄ¿±êÈ·ÈÏ person (1, 6) -> alert_20260923_191722_316_0026_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #27£ºÄ¿±êÈ·ÈÏ person (2, 6) -> alert_20260923_191722_317_0027_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #28£ºÄ¿±êÈ·ÈÏ person (3, 6) -> alert_20260923_191722_317_0028_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #29£ºÄ¿±êÈ·ÈÏ person (0, 7) -> alert_20260923_191722_318_0029_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #30£ºÄ¿±êÈ·ÈÏ person (1, 7) -> alert_20260923_191722_318_0030_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #31£ºÄ¿±êÈ·ÈÏ person (2, 7) -> alert_20260923_191722_319_0031_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #32£ºÄ¿±êÈ·ÈÏ person (3, 7) -> alert_20260923_191722_319_0032_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #33£ºÄ¿±êÈ·ÈÏ person (0, 8) -> alert_20260923_191722_320_0033_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #34£ºÄ¿±êÈ·ÈÏ person (1, 8) -> alert_20260923_191722_320_0034_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #35£ºÄ¿±êÈ·ÈÏ person (2, 8) -> alert_20260923_191722_321_0035_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #36£ºÄ¿±êÈ·ÈÏ person (3, 8) -> alert_20260923_191722_322_0036_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #37£ºÄ¿±êÈ·ÈÏ person (0, 9) -> alert_20260923_191722_322_0037_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #38£ºÄ¿±êÈ·ÈÏ person (1, 9) -> alert_20260923_191722_323_0038_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #39£ºÄ¿±êÈ·ÈÏ person (2, 9) -> alert_20260923_191722_324_0039_confirm.png
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµ #40£ºÄ¿±êÈ·ÈÏ person (3, 9) -> alert_20260923_191722_324_0040_confirm.png
+2026-09-23 19:17:22 | INFO | test_archive | ÓÃÀı4 PASS£º4 Ïß³Ì x 10 Ìõ²¢·¢¹éµµ£¬40 ĞĞ/40 ÎÄ¼ş/ĞòºÅÆëÈ«
+2026-09-23 19:17:22 | INFO | src.archiver | ¸æ¾¯¹éµµÆ÷¾ÍĞ÷£º¹éµµÄ¿Â¼ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\unit\c5£¬¸æ¾¯ÈÕÖ¾ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\unit\c5\alert_log.csv
+2026-09-23 19:17:22 | INFO | test_archive | ÓÃÀı5 PASS£ºframe=None ÕıÈ·Å×³ö ValueError
+2026-09-23 19:17:22 | INFO | test_archive | ==== È«²¿ 5 ×é£¨º¬²¢·¢£©ºÏ³ÉÓÃÀı¶ÏÑÔÍ¨¹ı ====
+2026-09-23 19:17:22 | INFO | src.video_source | ÒÑ´ò¿ªÊÓÆµÎÄ¼ş£ºC:/Users/OS/Desktop/farm_guard/videos/5GÖÇ»ÛÅ©ÒµËØ²Ä.mp4£¨1920x1080£¬25.00 fps£©
+PASS: ºÏ³É³¡¾°µ¥Ôª²âÊÔ 5 ×éÓÃÀıÈ«²¿Í¨¹ı
+2026-09-23 19:17:25 | INFO | src.engine | ÕıÔÚ¼ÓÔØ YOLO Ä£ĞÍÈ¨ÖØ£ºC:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt
+2026-09-23 19:17:25 | INFO | src.engine | Ä£ĞÍ¼ÓÔØÍê³É£¬¿ÉÊ¶±ğÀà±ğÊı£º80£¬¹Ø×¢Àà±ğ£ºperson,car,bicycle
+2026-09-23 19:17:25 | INFO | src.engine | ÍÆÀí¾«¶ÈÅĞ¶¨£ºÅäÖÃ fp16=True ÇÒ¼ì²âµ½ CUDA GPU£ºÆôÓÃ FP16 °ë¾«¶ÈÍÆÀí
+2026-09-23 19:17:25 | INFO | src.engine | Àà±ğÓ³ÉäÅĞ¶¨£ºÅäÖÃ class_map_enabled=True£¬µ«Ä£ĞÍÀà±ğÃû²»È«ÊôÓÚ VisDrone 10 Àà¼¯ºÏ£¨Èç airplane£©£ºÀà±ğÓ³Éä²»ÉúĞ§£¬°´Ä£ĞÍÔ­Ê¼Àà±ğÃûÊä³ö£¨ºãµÈÓ³Éä£©
+2026-09-23 19:17:25 | INFO | src.engine | ¼ì²âÒıÇæ¹²ÏíÊµÀıÒÑ½¨Á¢£º±¾½ø³ÌÄÚ¼ì²â/¸ú×Ù/ÇĞÆ¬ÈıÌõÍÆÀíÂ·¾¶¸´ÓÃÍ¬Ò»Ä£ĞÍÓëÅĞ¶¨½á¹û£¬È¨ÖØ²»ÔÙÖØ¸´¼ÓÔØ
+2026-09-23 19:17:25 | INFO | src.archiver | ¸æ¾¯¹éµµÆ÷¾ÍĞ÷£º¹éµµÄ¿Â¼ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive£¬¸æ¾¯ÈÕÖ¾ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\alert_log.csv
+2026-09-23 19:17:25 | INFO | test_archive | ÕæÊµÊÓÆµ¶Ëµ½¶ËÑéÊÕ¿ªÊ¼£ºC:/Users/OS/Desktop/farm_guard/videos/5GÖÇ»ÛÅ©ÒµËØ²Ä.mp4£¨1920x1080£¬25.00 fps£©£¬¹éµµÄ¿Â¼ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive
+2026-09-23 19:17:27 | INFO | src.archiver | ¸æ¾¯¹éµµ #1£ºÄ¿±êÈ·ÈÏ car (1875, 324) -> alert_20260923_191727_807_0001_confirm.png
+2026-09-23 19:17:28 | INFO | src.archiver | ¸æ¾¯¹éµµ #2£ºÄ¿±êÈ·ÈÏ car (819, 390) -> alert_20260923_191728_123_0002_confirm.png
+2026-09-23 19:17:28 | INFO | src.archiver | ¸æ¾¯¹éµµ #3£ºÄ¿±êÈ·ÈÏ car (324, 659) -> alert_20260923_191728_279_0003_confirm.png
+2026-09-23 19:17:28 | INFO | src.archiver | ¸æ¾¯¹éµµ #4£ºÄ¿±êÈ·ÈÏ car (807, 399) -> alert_20260923_191728_611_0004_confirm.png
+2026-09-23 19:17:28 | INFO | src.archiver | ¸æ¾¯¹éµµ #5£ºÄ¿±êÈ·ÈÏ car (1093, 238) -> alert_20260923_191728_674_0005_confirm.png
+2026-09-23 19:17:28 | INFO | src.archiver | ¸æ¾¯¹éµµ #6£ºÄ¿±êÈ·ÈÏ car (930, 331) -> alert_20260923_191728_785_0006_confirm.png
+2026-09-23 19:17:28 | INFO | src.archiver | ¸æ¾¯¹éµµ #7£ºÄ¿±êÈ·ÈÏ car (278, 691) -> alert_20260923_191728_878_0007_confirm.png
+2026-09-23 19:17:30 | INFO | src.archiver | ¸æ¾¯¹éµµ #8£ºÄ¿±êÈ·ÈÏ person (1357, 510) -> alert_20260923_191730_305_0008_confirm.png
+2026-09-23 19:17:30 | INFO | src.archiver | ¸æ¾¯¹éµµ #9£ºÄ¿±êÈ·ÈÏ person (1066, 505) -> alert_20260923_191730_582_0009_confirm.png
+2026-09-23 19:17:30 | INFO | src.archiver | ¸æ¾¯¹éµµ #10£ºÄ¿±êÈ·ÈÏ person (1016, 499) -> alert_20260923_191730_714_0010_confirm.png
+2026-09-23 19:17:30 | INFO | src.archiver | ¸æ¾¯¹éµµ #11£ºÄ¿±êÈ·ÈÏ person (975, 483) -> alert_20260923_191730_901_0011_confirm.png
+2026-09-23 19:17:35 | INFO | src.archiver | ¸æ¾¯¹éµµ #12£ºÄ¿±êÈ·ÈÏ car (979, 337) -> alert_20260923_191735_177_0012_confirm.png
+2026-09-23 19:17:35 | INFO | src.archiver | ¸æ¾¯¹éµµ #13£ºÄ¿±êÈ·ÈÏ car (991, 342) -> alert_20260923_191735_354_0013_confirm.png
+2026-09-23 19:17:37 | INFO | src.archiver | ¸æ¾¯¹éµµ #14£ºÄ¿±êÈ·ÈÏ person (207, 744) -> alert_20260923_191737_208_0014_confirm.png
+2026-09-23 19:17:37 | INFO | src.archiver | ¸æ¾¯¹éµµ #15£ºÄ¿±êÈ·ÈÏ person (252, 729) -> alert_20260923_191737_643_0015_confirm.png
+2026-09-23 19:17:40 | INFO | src.archiver | ¸æ¾¯¹éµµ #16£ºÄ¿±êÈ·ÈÏ person (1419, 711) -> alert_20260923_191740_210_0016_confirm.png
+2026-09-23 19:17:40 | INFO | src.archiver | ¸æ¾¯¹éµµ #17£ºÄ¿±êÈ·ÈÏ person (1566, 241) -> alert_20260923_191740_359_0017_confirm.png
+2026-09-23 19:17:40 | INFO | src.archiver | ¸æ¾¯¹éµµ #18£ºÄ¿±êÈ·ÈÏ person (1566, 240) -> alert_20260923_191740_515_0018_confirm.png
+2026-09-23 19:17:40 | INFO | src.archiver | ¸æ¾¯¹éµµ #19£ºÄ¿±êÈ·ÈÏ person (1566, 238) -> alert_20260923_191740_754_0019_confirm.png
+2026-09-23 19:17:41 | INFO | src.archiver | ¸æ¾¯¹éµµ #20£ºÄ¿±êÈ·ÈÏ person (1566, 241) -> alert_20260923_191740_946_0020_confirm.png
+2026-09-23 19:17:41 | INFO | src.archiver | ¸æ¾¯¹éµµ #21£ºÄ¿±êÈ·ÈÏ person (1419, 712) -> alert_20260923_191741_283_0021_confirm.png
+2026-09-23 19:17:41 | INFO | src.archiver | ¸æ¾¯¹éµµ #22£ºÄ¿±êÈ·ÈÏ person (1566, 241) -> alert_20260923_191741_350_0022_confirm.png
+2026-09-23 19:17:41 | INFO | src.archiver | ¸æ¾¯¹éµµ #23£ºÄ¿±êÈ·ÈÏ person (1417, 712) -> alert_20260923_191741_562_0023_confirm.png
+2026-09-23 19:17:41 | INFO | src.archiver | ¸æ¾¯¹éµµ #24£ºÄ¿±êÈ·ÈÏ person (1566, 240) -> alert_20260923_191741_785_0024_confirm.png
+2026-09-23 19:17:46 | INFO | src.archiver | ¸æ¾¯¹éµµ #25£ºÄ¿±êÈ·ÈÏ person (1096, 137) -> alert_20260923_191746_881_0025_confirm.png
+2026-09-23 19:17:47 | INFO | src.line_counter | Ö¡1059 Ô½Ïß³ö£ºÄ¿±ê#67 person ´©ÏßÓÚ(746,540)£¨ÊÓÆµÄÚÊ±¼ä 42.36s£©£¬ÀÛ¼Æ ½ø0 ³ö1
+2026-09-23 19:17:47 | INFO | src.archiver | ¸æ¾¯¹éµµ #26£ºÔ½Ïß³ö person (746, 540) -> alert_20260923_191747_124_0026_cross_out.png
+2026-09-23 19:17:47 | INFO | test_archive | [´©Ïß¸æ¾¯] Ö¡1059 t=42.36s ³ö person #67 ´©Ïßµã(746, 540) -> alert_20260923_191747_124_0026_cross_out.png
+2026-09-23 19:17:47 | INFO | test_archive | Á½Àà¸æ¾¯¾ùÒÑ¹éµµ£¨È·ÈÏ 25 Ìõ / ´©Ïß 1 Ìõ£©£¬ÓÚµÚ 1059 Ö¡ÊÕÎ²
+2026-09-23 19:17:47 | INFO | src.video_source | ÊÓÆµÔ´ÒÑÊÍ·Å
+çœŸå®è§†é¢‘ç«¯åˆ°ç«¯éªŒæ”¶é€šè¿‡ï¼šå…±å¤„ç† 1059 å¸§ï¼Œå½’æ¡£ 26 æ¡ï¼ˆç›®æ ‡ç¡®è®¤ 25 / ç©¿çº¿ 1ï¼‰ï¼ŒCSV C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\alert_log.csvï¼Œå½’æ¡£ç›®å½• C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive
+2026-09-23 19:17:47 | INFO | test_archive | ÕæÊµÊÓÆµ¶Ëµ½¶ËÑéÊÕÍ¨¹ı£º¹²´¦Àí 1059 Ö¡£¬¹éµµ 26 Ìõ£¨Ä¿±êÈ·ÈÏ 25 / ´©Ïß 1£©£¬CSV C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive\alert_log.csv£¬¹éµµÄ¿Â¼ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a7_archive
+PASS: tests/test_archive.py åˆæˆå•æµ‹ä¸çœŸå®è§†é¢‘ç«¯åˆ°ç«¯éªŒæ”¶å…¨éƒ¨é€šè¿‡

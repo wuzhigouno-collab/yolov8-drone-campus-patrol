@@ -1,0 +1,19 @@
+2026-09-23 19:16:51 | INFO | test_slicer | ==== A12 切片推理模块 验收测试开始 ====
+2026-09-23 19:16:51 | INFO | test_slicer | 用例1 PASS：2x2/重叠0.2 区域坐标精确、全覆盖、重叠率达标（水平重叠 214px、垂直 120px）；重叠0 相接、1x1 整图、3x2 六片
+2026-09-23 19:16:51 | INFO | test_slicer | 用例2 PASS：切片内 (10,20,110,120)+偏移(853,480) -> 原图 [863, 500, 963, 600]；越界/负坐标钳制正确
+2026-09-23 19:16:51 | INFO | test_slicer | 用例3 PASS：跨切片边界目标（IOU=0.9254）合并去重保留高置信框；IOU=0.5 对照场景阈值 0.5 合并 / 0.6 保留；类别感知不互杀
+2026-09-23 19:16:51 | INFO | test_slicer | 测试图 tests\assets\a12_slice_frame.jpg（1920x1080）
+2026-09-23 19:16:55 | INFO | src.engine | 正在加载 YOLO 模型权重：C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt
+2026-09-23 19:16:55 | INFO | src.engine | 模型加载完成，可识别类别数：80，关注类别：person,car,bicycle
+2026-09-23 19:16:55 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:55 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 airplane）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:55 | INFO | src.engine | 检测引擎共享实例已建立：本进程内检测/跟踪/切片三条推理路径复用同一模型与判定结果，权重不再重复加载
+2026-09-23 19:16:55 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：80，关注类别：person,car,bicycle
+2026-09-23 19:16:55 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:55 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 airplane）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:55 | INFO | src.slicer | 切片推理器初始化：2x2 切片、重叠率 0.20、合并 NMS IOU 阈值 0.50
+2026-09-23 19:16:55 | INFO | test_slicer | 整图模式检出 4 个：[('person', 0.9302), ('person', 0.9189), ('person', 0.8984), ('person', 0.8286)]
+2026-09-23 19:16:55 | INFO | test_slicer | 切片模式检出 8 个：[('person', 0.894, 0), ('person', 0.8931, 0), ('person', 0.8569, 2), ('person', 0.8555, 1), ('person', 0.8555, 2), ('person', 0.833, 2), ('person', 0.8291, 3), ('person', 0.8027, 0)]
+2026-09-23 19:16:55 | INFO | test_slicer | 用例4 PASS：切片 8 个 >= 整图 4 个；合并后任意两框 IOU<0.5（最大 pair IOU=0.2391）；接口与 Detector.detect() 对齐
+2026-09-23 19:16:55 | INFO | test_slicer | ==== 全部 4 组用例断言通过 ====
+PASS: tests/test_slicer.py 鍏ㄩ儴鏂

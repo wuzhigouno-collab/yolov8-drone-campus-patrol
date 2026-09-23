@@ -1,0 +1,11 @@
+2026-09-23 19:16:34 | INFO | test_class_map | ==== 阶段 C VisDrone 类别映射模块 验收测试开始 ====
+2026-09-23 19:16:34 | INFO | test_class_map | 用例1 PASS：10 类全集 = 7 保留类 + 3 丢弃类；映射值域为 person/bicycle/motorcycle/car/bus 五类
+2026-09-23 19:16:34 | INFO | test_class_map | 用例2 PASS：pedestrian->person；people->person；bicycle->bicycle；car->car；van->car；truck->None；tricycle->None；awning-tricycle->None；bus->bus；motor->motorcycle
+2026-09-23 19:16:34 | INFO | test_class_map | 用例2b PASS：truck/tricycle/awning-tricycle 均返回 None（丢弃）
+2026-09-23 19:16:34 | INFO | test_class_map | 用例3 PASS：开关开启 + VisDrone 10 类名映射生效（dict/list 两种 names 形式一致）
+2026-09-23 19:16:34 | INFO | test_class_map | 用例4 PASS：COCO 类名（含与 VisDrone 同名类）全部恒等透传，映射完全不改变现有行为
+2026-09-23 19:16:34 | INFO | test_class_map | 用例5 PASS：开关关闭 + VisDrone 类名仍恒等透传（pedestrian 不归并、truck 不丢弃）
+2026-09-23 19:16:34 | INFO | test_class_map | 用例6 PASS：生效态 truck 丢弃、pedestrian/van 归并；COCO 恒等态输出与无映射逐值一致
+2026-09-23 19:16:34 | INFO | test_class_map | 用例7 PASS：未知类名原样返回；默认开关 True；空 names 不生效
+2026-09-23 19:16:34 | INFO | test_class_map | ==== 全部 8 组用例断言通过 ====
+PASS: tests/test_class_map.py 全部断言通过

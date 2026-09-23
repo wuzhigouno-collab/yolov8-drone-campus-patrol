@@ -1,0 +1,53 @@
+# ============================================================================
+# 鹰眼巡校——GitHub 公开仓库排除清单
+# 规则依据：docs/实验计划.md 第 12 节（260923 用户确认）
+#   1. hw7 规矩：weights/ 与数据集不进仓库；
+#   2. hw7.pdf 等第三方资料同样不进仓库（版权不属于本项目）；
+#   3. 运行期产物不入库。
+# ============================================================================
+
+# ---- 模型权重（hw7 规矩：不提交） ----
+weights/
+*.pt
+*.onnx
+*.engine
+
+# ---- 数据集（hw7 规矩：不提交） ----
+data/
+*.zip
+
+# ---- 第三方资料（版权不入公开仓库：hw5 参考代码、hw7.pdf 等） ----
+reference/
+hw7.pdf
+
+# ---- 运行产物（告警归档、训练输出、日志、评估输出） ----
+archive/
+runs/
+logs/
+tests/out_frames*.json
+tests/a10_eval*.json
+
+# ---- 视频素材（不进交付与公开仓库） ----
+*.mp4
+tests/assets/
+
+# ---- Python 常规 ----
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# ---- 阶段 C 追加（260923 用户确认） ----
+# 软著登记材料（大体积 docx；后续含身份证明扫描件，隐私不进仓库）
+copyright/
+# tests/ 验收留痕（A/B 阶段截图/日志/JSON/佐证目录，属可再生的运行证据；
+# 测试代码 test_*.py 与 eval_config.yaml 保留入库）
+tests/*.png
+tests/*.log
+tests/*.json
+tests/line_evidence*/
+tests/a7_archive/
+tests/a8_heatmap/
+tests/b2_loiter_archive/

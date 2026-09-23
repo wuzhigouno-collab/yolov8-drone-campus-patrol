@@ -1,0 +1,45 @@
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+2026-09-23 19:16:38 | INFO | src.engine | 检测引擎接入外部模型实例，可识别类别数：2，关注类别：person,car,bicycle
+2026-09-23 19:16:38 | INFO | src.engine | 推理精度判定：配置 fp16=True 且检测到 CUDA GPU：启用 FP16 半精度推理
+2026-09-23 19:16:38 | INFO | src.engine | 类别映射判定：配置 class_map_enabled=True，但模型类别名不全属于 VisDrone 10 类集合（如 person）：类别映射不生效，按模型原始类别名输出（恒等映射）
+2026-09-23 19:16:38 | INFO | src.tracker | 跟踪器已接入检测引擎：模型与 FP16/类别映射判定结果共享自 src.engine.DetectionEngine（权重路径 C:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt）
+PASS test_fp16_config_off
+PASS test_fp16_enabled_with_cuda
+PASS test_fp16_fallback_without_cuda
+PASS test_fp16_auto_probe_consistent
+PASS test_tracker_fp16_consistent
+PASS test_extrapolate_position
+PASS test_extrapolate_does_not_advance_confirm
+PASS test_extrapolate_keeps_confirmed_state
+PASS test_vanished_track_not_extrapolated
+PASS test_extrapolate_clamped_to_frame
+PASS test_extrapolate_extends_trail
+PASS test_extrapolate_backend_unchanged
+全部 12 项断言通过：PASS

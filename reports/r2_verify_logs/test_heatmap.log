@@ -1,0 +1,24 @@
+2026-09-23 19:17:55 | INFO | test_heatmap | ==== A8 ÈÈÁ¦Í¼Ä£¿é ºÏ³É³¡¾°µ¥Ôª²âÊÔ¿ªÊ¼ ====
+2026-09-23 19:17:55 | INFO | test_heatmap | ÓÃÀı1 PASS£ºupdate Ö»ÊÕÒÑÈ·ÈÏÄ¿±ê£¬Ãªµã=µ×²¿ÖĞĞÄ (120.0, 300.0)£¬add_point/²éÑ¯½Ó¿ÚÕıÈ·
+2026-09-23 19:17:55 | INFO | test_heatmap | ÓÃÀı2 PASS£ºÈÈÇøÁÁ¶È 239.6 >> ÀäÇø 0.0£¨²î 239.6£©
+2026-09-23 19:17:55 | INFO | test_heatmap | ÓÃÀı3 PASS£º¿ÕÀÛ»ı render/export_png ¾ùÅ× ValueError ÇÒ²»ÂäÅÌ
+2026-09-23 19:17:55 | INFO | test_heatmap | ÓÃÀı4 PASS£ºµ×Ö¡µş¼ÓÎŞÈÈÇøÔ­Ñù±£³Ö¡¢ÈÈÇø»ìºÏ¡¢³ß´çĞ£ÑéÉúĞ§
+2026-09-23 19:17:55 | INFO | src.heatmap | »­Ãæ³ß´ç±ä»¯ (640, 480) -> (320, 240)£¬ÈÈÁ¦ÀÛ»ıÇå¿ÕÖØ¼Æ
+2026-09-23 19:17:55 | INFO | test_heatmap | ÓÃÀı5 PASS£ºreset Çå¿Õ¡¢³ß´ç±ä»¯×Ô¶¯Çå¿ÕÖØ¼Æ¾ùÕıÈ·
+2026-09-23 19:17:55 | INFO | test_heatmap | ==== È«²¿ 5 ×éºÏ³ÉÓÃÀı¶ÏÑÔÍ¨¹ı ====
+2026-09-23 19:17:55 | INFO | src.video_source | ÒÑ´ò¿ªÊÓÆµÎÄ¼ş£ºC:/Users/OS/Desktop/farm_guard/videos/5GÖÇ»ÛÅ©ÒµËØ²Ä.mp4£¨1920x1080£¬25.00 fps£©
+PASS: ºÏ³É³¡¾°µ¥Ôª²âÊÔ 5 ×éÓÃÀıÈ«²¿Í¨¹ı
+2026-09-23 19:17:59 | INFO | src.engine | ÕıÔÚ¼ÓÔØ YOLO Ä£ĞÍÈ¨ÖØ£ºC:\Users\OS\Desktop\eagle_eye_patrol\weights/yolov8n.pt
+2026-09-23 19:17:59 | INFO | src.engine | Ä£ĞÍ¼ÓÔØÍê³É£¬¿ÉÊ¶±ğÀà±ğÊı£º80£¬¹Ø×¢Àà±ğ£ºperson,car,bicycle
+2026-09-23 19:17:59 | INFO | src.engine | ÍÆÀí¾«¶ÈÅĞ¶¨£ºÅäÖÃ fp16=True ÇÒ¼ì²âµ½ CUDA GPU£ºÆôÓÃ FP16 °ë¾«¶ÈÍÆÀí
+2026-09-23 19:17:59 | INFO | src.engine | Àà±ğÓ³ÉäÅĞ¶¨£ºÅäÖÃ class_map_enabled=True£¬µ«Ä£ĞÍÀà±ğÃû²»È«ÊôÓÚ VisDrone 10 Àà¼¯ºÏ£¨Èç airplane£©£ºÀà±ğÓ³Éä²»ÉúĞ§£¬°´Ä£ĞÍÔ­Ê¼Àà±ğÃûÊä³ö£¨ºãµÈÓ³Éä£©
+2026-09-23 19:17:59 | INFO | src.engine | ¼ì²âÒıÇæ¹²ÏíÊµÀıÒÑ½¨Á¢£º±¾½ø³ÌÄÚ¼ì²â/¸ú×Ù/ÇĞÆ¬ÈıÌõÍÆÀíÂ·¾¶¸´ÓÃÍ¬Ò»Ä£ĞÍÓëÅĞ¶¨½á¹û£¬È¨ÖØ²»ÔÙÖØ¸´¼ÓÔØ
+2026-09-23 19:17:59 | INFO | test_heatmap | ÕæÊµÊÓÆµ¶Ëµ½¶ËÑéÊÕ¿ªÊ¼£ºC:/Users/OS/Desktop/farm_guard/videos/5GÖÇ»ÛÅ©ÒµËØ²Ä.mp4£¨1920x1080£¬25.00 fps£©£¬Ä¿±êÀÛ»ıµã 80£¬Ö¡ÉÏÏŞ 800
+2026-09-23 19:18:07 | INFO | test_heatmap | ÒÑÀÛ»ı 80 ¸öÒÑÈ·ÈÏÃªµã£¨>= 80£©£¬ÓÚµÚ 478 Ö¡ÊÕÎ²
+2026-09-23 19:18:07 | INFO | src.video_source | ÊÓÆµÔ´ÒÑÊÍ·Å
+2026-09-23 19:18:07 | INFO | src.heatmap | ÈÈÁ¦Í¼ÒÑµ¼³ö£ºC:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_black.png£¨ÀÛ»ı 80 ¸ö¹ì¼£µã£¬µ×Ö¡£ººÚµ×£©
+2026-09-23 19:18:07 | INFO | src.heatmap | ÈÈÁ¦Í¼ÒÑµ¼³ö£ºC:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_overlay.png£¨ÀÛ»ı 80 ¸ö¹ì¼£µã£¬µ×Ö¡£ºµ±Ç°»­Ãæ£©
+2026-09-23 19:18:07 | INFO | test_heatmap | ÁÁ¶È¶ÏÑÔÍ¨¹ı£ºÃÜ¼¯ÇøÖĞĞÄ (807,447)£¨°ë¾¶25ÄÚÁÚ¾Ó12¸ö£©ÁÁ¶È¾ùÖµ 242.8£»ÎŞÄ¿±ê¸ñ (0,0) ÁÁ¶È¾ùÖµ 0.0£»²î 242.8 > 50
+çœŸå®è§†é¢‘ç«¯åˆ°ç«¯éªŒæ”¶é€šè¿‡ï¼šå¤„ç† 478 å¸§ï¼Œç´¯ç§¯ 80 ä¸ªå·²ç¡®è®¤é”šç‚¹ï¼›å¯†é›†æ ¼äº®åº¦ 242.8 >> æ— ç›®æ ‡æ ¼ 0.0ï¼›å¯¼å‡º C:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_black.png ä¸ C:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_overlay.png
+2026-09-23 19:18:07 | INFO | test_heatmap | ÕæÊµÊÓÆµ¶Ëµ½¶ËÑéÊÕÍ¨¹ı£º´¦Àí 478 Ö¡£¬ÀÛ»ı 80 ¸öÒÑÈ·ÈÏÃªµã£»ÃÜ¼¯¸ñÁÁ¶È 242.8 >> ÎŞÄ¿±ê¸ñ 0.0£»µ¼³ö C:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_black.png Óë C:\Users\OS\Desktop\eagle_eye_patrol\tests\a8_heatmap\heatmap_overlay.png
+PASS: tests/test_heatmap.py åˆæˆå•æµ‹ä¸çœŸå®è§†é¢‘ç«¯åˆ°ç«¯éªŒæ”¶å…¨éƒ¨é€šè¿‡

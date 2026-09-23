@@ -1,0 +1,11 @@
+# 鹰眼巡校——无人机校园安全智能巡检系统 V1.0 依赖清单
+# 按 plan.md 技术约定：Python 3.10+
+
+# YOLO 目标检测（ ultralytics>=8.4 ）
+ultralytics>=8.4
+# 视频解码与图像处理
+opencv-python>=4.8
+# 数值计算
+numpy>=1.24
+# 图像读写（GUI 画面显示与归档截图使用）
+Pillow>=10.0
