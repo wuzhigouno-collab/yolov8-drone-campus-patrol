@@ -71,7 +71,7 @@ python tools/train.py --data data/campus.yaml --epochs 100 --imgsz 960 --batch 8
 
 - `--weights` 默认取 `Config().weights_path`（`weights/yolov8n.pt`）；二次微调时传上一轮产出的 `weights/best.pt`。
 - 增强参数可配：`--hsv-h/--hsv-s/--hsv-v/--degrees/--translate/--scale/--fliplr/--mosaic`。
-- 硬性约束：正式训练 `imgsz < 960` 会被拒绝（plan.md 小目标召回要求）；多尺度训练（`multi_scale=True`）在正式模式强制开启。
+- 硬性约束：正式训练 `imgsz < 960` 会被拒绝（plan.md 小目标召回要求）；多尺度训练（`multi_scale=0.5`，8.4.21 起该参数为 float 语义，取值依据见 tools/run_exp.sh 头部常量区注释）在正式模式强制开启。
 - 产物：`runs/<name>/` 下含训练曲线、混淆矩阵、`weights/best.pt`（按验证集 mAP/fitness 自动保存的最优权重）与 `weights/last.pt`；正式模式结束后自动把 `best.pt` 复制为 `weights/best.pt`。
 
 冒烟自验（无真实数据集时仅验证流程）：

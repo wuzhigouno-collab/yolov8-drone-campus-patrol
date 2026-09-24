@@ -85,7 +85,7 @@ SEED=0
 # 语义(PR #23284,default.yaml 注释 "(float) multi-scale range as a fraction of
 # imgsz");True 会被按 1.0 解释,preprocess_batch 中缩放下界 int(imgsz*(1-1.0))=0,
 # randrange 可抽出 0 -> interpolate(size=[0,0]) 确定性崩溃(issue #23480,
-# ultralytics/models/yolo/detect/train.py:120-125,本机 8.4.21 源码已核实);
+# ultralytics/models/yolo/detect/train.py:120-135,interpolate 调用在 :135,本机 8.4.21 源码已核实);
 # 0.5 等价旧版 True 的 ±50% 抖动,与实验计划 §4 "multi_scale 开启"原意一致。
 # 8.4.21 内置数据集文件名实测为 VisDrone.yaml(大小写均大写段;Linux 大小写敏感,
 # 小写 visdrone.yaml 不可解析——R3 实例实测踩坑,Windows 不敏感故本机不暴露)
