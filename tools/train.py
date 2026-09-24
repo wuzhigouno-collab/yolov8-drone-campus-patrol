@@ -209,7 +209,12 @@ def main():
                 "正式训练 imgsz=%d 低于下限 %d：俯视小目标召回要求大输入尺寸；"
                 "流程自验请使用 --smoke 模式", args.imgsz, TRAIN_MIN_IMGSZ)
             sys.exit(2)
-        multi_scale = True
+        # 多尺度取值依据（参数语义修正）：ultralytics 8.4.21 起 multi_scale 由
+        # bool 改 float 语义（PR #23284，缩放比例 fraction）；True 会被按 1.0
+        # 解释，preprocess_batch 缩放下界 int(imgsz*(1-1.0))=0，randrange 抽出
+        # 0 后 interpolate(size=[0,0]) 确定性崩溃（issue #23480）。0.5 等价旧版
+        # True 的 ±50% 抖动，与 plan.md"开启多尺度训练"原意一致。
+        multi_scale = 0.5
         run_name = args.name or "campus_train"
         logger.info(
             "正式迁移学习：data=%s weights=%s imgsz=%d epochs=%d lr0=%g "

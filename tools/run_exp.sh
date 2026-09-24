@@ -80,7 +80,13 @@ BATCH="${BATCH:-32}"            # 环境变量覆盖:OOM 时人工减半重跑(�
 OPTIMIZER=auto
 PATIENCE=20
 SEED=0
-# multi_scale=True / cos_lr=True / AMP 开启:在各训练调用处显式写死,不接受覆盖
+# multi_scale=0.5 / cos_lr=True / AMP 开启:在各训练调用处显式写死,不接受覆盖。
+# multi_scale 取值依据(参数语义修正留痕):8.4.21 起 multi_scale 由 bool 改 float
+# 语义(PR #23284,default.yaml 注释 "(float) multi-scale range as a fraction of
+# imgsz");True 会被按 1.0 解释,preprocess_batch 中缩放下界 int(imgsz*(1-1.0))=0,
+# randrange 可抽出 0 -> interpolate(size=[0,0]) 确定性崩溃(issue #23480,
+# ultralytics/models/yolo/detect/train.py:120-125,本机 8.4.21 源码已核实);
+# 0.5 等价旧版 True 的 ±50% 抖动,与实验计划 §4 "multi_scale 开启"原意一致。
 # 8.4.21 内置数据集文件名实测为 VisDrone.yaml(大小写均大写段;Linux 大小写敏感,
 # 小写 visdrone.yaml 不可解析——R3 实例实测踩坑,Windows 不敏感故本机不暴露)
 DATA="${DATA:-VisDrone.yaml}"   # ultralytics 内置,首次自动下载转换(§2)
@@ -365,8 +371,9 @@ results = model.train(
     batch=int(os.environ["EXP_BATCH"]),
     optimizer=os.environ["EXP_OPTIMIZER"],
     patience=int(os.environ["EXP_PATIENCE"]),
-    # §4 统一参数:multi_scale / cos_lr / AMP / seed 全部显式
-    multi_scale=True, cos_lr=True, amp=True,
+    # §4 统一参数:multi_scale(0.5,bool->float 语义修正,依据见脚本头常量区注释)
+    # / cos_lr / AMP / seed 全部显式
+    multi_scale=0.5, cos_lr=True, amp=True,
     seed=int(os.environ["EXP_SEED"]),
     # E0 基线默认增强显式锚定;受试变量 degrees/copy_paste 由环境传入实际值
     mosaic=1.0, fliplr=0.5, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4,
@@ -399,7 +406,7 @@ train_yolo() {
         model="$MODEL_N" data="$DATA" \
         imgsz="$IMGSZ" epochs="$EPOCHS" batch="$BATCH" \
         optimizer="$OPTIMIZER" patience="$PATIENCE" \
-        multi_scale=True cos_lr=True amp=True seed="$SEED" \
+        multi_scale=0.5 cos_lr=True amp=True seed="$SEED" \
         mosaic=1.0 fliplr=0.5 hsv_h=0.015 hsv_s=0.7 hsv_v=0.4 \
         degrees="${DEGREES:-0.0}" translate=0.1 scale=0.5 shear=0.0 perspective=0.0 \
         flipud=0.0 mixup=0.0 cutmix=0.0 copy_paste="${COPY_PASTE:-0.0}" \
@@ -411,30 +418,55 @@ train_yolo() {
 }
 
 # ============================================================================
-# 冒烟训练(SMOKE=1):走 tools/train.py 既有 --smoke 机制(合成迷你数据集、
-# 极小 epochs、amp 关闭、无联网下载),仅验证流程;快照标注合成数据。
+# 冒烟训练(SMOKE=1):合成迷你数据集 + yolo CLI 真实训练路径冒烟。
+#   数据集合成复用 tools/train.py 既有 build_smoke_dataset(固定种子、幂等);
+#   训练用 yolo CLI 直跑(与正式训练同一条参数路径):极小 imgsz/epochs/batch、
+#   amp=False、workers=0 保证完全离线;multi_scale=0.5 等统一参数与正式口径一致,
+#   顺带实证 0.5 在 8.4.21 下不触发 interpolate(size=[0,0]) 崩溃(传 True 必崩,
+#   依据见脚本头常量区注释)。仅验证流程;快照标注合成数据。
 #   $1=基础 name(实际 runs 目录加 smoke_ 前缀) $2=实验编号 $3=degrees(可选)
 # ============================================================================
 smoke_train() {
     local base="$1" exp_id="$2" degrees="${3:-0.0}" name="smoke_$1"
-    local start rc
+    local start rc smw
     start=$(date +%s)
-    warn "SMOKE 冒烟模式:tools/train.py --smoke 合成迷你数据集(无语义,精度无意义,严禁冒充真实训练)"
+    warn "SMOKE 冒烟模式:合成迷你数据集(无语义,精度无意义,严禁冒充真实训练)"
     case "$SUB" in
         e1b|e1c) warn "SMOKE 不演练 Albumentations 受试变量($SUB 的 cutout/invert),仅走通训练流程" ;;
-        e1d)     warn "SMOKE 不演练 copy_paste 受试变量(train.py 未暴露该参数),仅走通训练流程" ;;
+        e1d)     warn "SMOKE 不演练 copy_paste 受试变量(本冒烟命令未含该参数),仅走通训练流程" ;;
         e1e|e2)  warn "SMOKE 不演练组合增强与模型换装,仅走通训练流程" ;;
     esac
-    # 冒烟实际生效值与正式矩阵不同(imgsz/epochs/amp/multi_scale 等),
-    # 快照回退值(SNAP_F_*)按冒烟实际调用传入,如实记录
-    "$PYTHON" tools/train.py --smoke \
-        --epochs "$SMOKE_EPOCHS" --imgsz 320 --batch "$SMOKE_BATCH" \
-        --degrees "$degrees" \
-        --seed "$SEED" --project "$RUNS_ABS" --name "$name"
+    # 冒烟权重:优先 weights/yolov8n.pt,缺则工作区根(实例 yolo CLI 自动下载位)
+    smw=weights/yolov8n.pt
+    [ -f "$smw" ] || smw=yolov8n.pt
+    [ -f "$smw" ] || { warn "找不到 yolov8n.pt(weights/ 或工作区根)"; return 2; }
+    # 1) 合成迷你数据集:复用 tools/train.py 既有 build_smoke_dataset(幂等,已存在则复用)
+    "$PYTHON" - <<'PYEOF'
+import os, sys
+sys.path.insert(0, os.path.join(os.getcwd(), "tools"))
+from src.config import Config
+from src.logger import get_logger
+import train as t
+t.build_smoke_dataset(Config(), get_logger("run_exp_smoke", Config()))
+print("冒烟迷你数据集就绪:%s" % os.path.join(t.SMOKE_DATASET_DIR, "smoke.yaml"))
+PYEOF
+    [ $? -eq 0 ] || { warn "合成冒烟数据集失败"; return 1; }
+    # 2) yolo CLI 冒烟训练:统一参数与正式口径一致(multi_scale=0.5/cos_lr/optimizer/
+    #    patience/seed/增强参数),仅 imgsz/epochs/batch/amp/workers 按冒烟收缩
+    yolo detect train \
+        model="$smw" data=data/smoke_dataset/smoke.yaml \
+        imgsz=320 epochs="$SMOKE_EPOCHS" batch="$SMOKE_BATCH" \
+        optimizer="$OPTIMIZER" patience="$PATIENCE" \
+        multi_scale=0.5 cos_lr=True amp=False seed="$SEED" \
+        mosaic=1.0 fliplr=0.5 hsv_h=0.015 hsv_s=0.7 hsv_v=0.4 \
+        degrees="$degrees" translate=0.1 scale=0.5 shear=0.0 perspective=0.0 \
+        flipud=0.0 mixup=0.0 cutmix=0.0 copy_paste=0.0 \
+        workers=0 project="$RUNS_ABS" name="$name"
     rc=$?
-    SNAP_F_MODEL="weights/yolov8n.pt(train.py smoke)" SNAP_F_DATA="合成迷你数据集(train.py smoke)" \
+    # 3) 快照(回退值按冒烟实际生效值;multi_scale=0.5 与正式口径一致,如实记录)
+    SNAP_F_MODEL="$smw" SNAP_F_DATA="合成迷你数据集(build_smoke_dataset)" \
     SNAP_F_IMGSZ=320 SNAP_F_EPOCHS="$SMOKE_EPOCHS" SNAP_F_BATCH="$SMOKE_BATCH" \
-    SNAP_F_PATIENCE=100 SNAP_F_MS=False SNAP_F_COSLR=False SNAP_F_AMP=False \
+    SNAP_F_PATIENCE="$PATIENCE" SNAP_F_MS=0.5 SNAP_F_COSLR=True SNAP_F_AMP=False \
     snapshot_config "$name" "$exp_id" "smoke" \
         "SMOKE 冒烟:合成数据/无语义/精度无意义,不冒充真实训练" "" "$start" "$LOGF" \
         || warn "配置快照生成失败(冒烟退出码 $rc 不变)"
@@ -443,7 +475,8 @@ smoke_train() {
 
 # ============================================================================
 # 实验函数(E0–E6,对照 §4 矩阵;统一参数:imgsz=960 epochs=100 batch=32(可覆盖)
-#   optimizer=auto patience=20 multi_scale=True cos_lr=True AMP 开 seed=0)
+#   optimizer=auto patience=20 multi_scale=0.5(bool->float 语义修正,依据见脚本头)
+#   cos_lr=True AMP 开 seed=0)
 # ============================================================================
 
 # E0 基线复训:YOLOv8n + 默认增强(mosaic=1.0, fliplr=0.5, 轻 HSV)
